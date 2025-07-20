@@ -6,81 +6,6 @@ import { MapPin, Users, Star, Ship, Menu, X, CarFront, Gauge, GitBranch, Briefca
 // Para resolver los errores de importación en este entorno.
 // =================================================================
 
-// --- Componentes de Tarjetas ---
-
-const DestinationCard = ({ image, name, description }) => (
-  <div className="bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 ease-in-out group flex flex-col">
-    <div className="relative h-56">
-      <img className="w-full h-full object-cover" src={image} alt={`Imagen de ${name}`} onError={(e) => { e.target.onerror = null; e.target.src='https://placehold.co/600x400/e2e8f0/4a5568?text=Actividad'; }}/>
-      <div className="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-40 transition-all duration-300"></div>
-    </div>
-    <div className="p-6 flex flex-col flex-grow">
-      <h3 className="text-xl font-bold text-gray-800 mb-2">{name}</h3>
-      <p className="text-gray-600 leading-relaxed flex-grow">{description}</p>
-      {/* <button className="mt-4 text-indigo-600 font-semibold hover:text-indigo-800 transition-colors duration-300 flex items-center self-start">
-        Saber Más
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-          <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
-        </svg>
-      </button> */}
-    </div>
-  </div>
-);
-
-
-const CarRentalCard = ({ image, name, features, price }) => (
-    <div className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
-        <div className="relative h-48">
-            <img src={image} alt={`Imagen de ${name}`} className="w-full h-full object-cover" onError={(e) => { e.target.onerror = null; e.target.src='https://placehold.co/600x400/e2e8f0/4a5568?text=Auto'; }}/>
-        </div>
-        <div className="p-6 flex-grow">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">{name}</h3>
-            <ul className="space-y-2 text-gray-600">
-                {features.map((feature, index) => (
-                    <li key={index} className="flex items-center">
-                        {feature.icon}
-                        <span className="ml-3">{feature.text}</span>
-                    </li>
-                ))}
-            </ul>
-        </div>
-        <div className="p-6 bg-gray-50">
-            <p className="text-lg text-gray-700">Desde <span className="font-bold text-2xl text-indigo-600">${price}</span>/día</p>
-            <button className="mt-4 w-full bg-indigo-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-indigo-700 transition-all duration-300 shadow-md">
-                Reservar Auto
-            </button>
-        </div>
-    </div>
-);
-
-const ServiceCard = ({ icon, title, description }) => (
-  <div className="bg-white p-8 rounded-xl shadow-md text-center hover:shadow-xl transition-shadow duration-300">
-    <div className="flex justify-center items-center mb-4">
-      <div className="bg-indigo-100 p-4 rounded-full">
-        {icon}
-      </div>
-    </div>
-    <h3 className="text-xl font-bold text-gray-800 mb-2">{title}</h3>
-    <p className="text-gray-600">{description}</p>
-  </div>
-);
-
-const TestimonialCard = ({ quote, author, role, image }) => (
-  <div className="bg-white rounded-xl shadow-lg p-8 mx-auto max-w-md">
-    <div className="flex items-center mb-4">
-      <img className="w-16 h-16 rounded-full object-cover mr-4" src={image} alt={`Foto de ${author}`} onError={(e) => { e.target.onerror = null; e.target.src='https://placehold.co/100x100/e2e8f0/4a5568?text=Autor'; }}/>
-      <div>
-        <p className="font-bold text-gray-900">{author}</p>
-        <p className="text-sm text-gray-500">{role}</p>
-      </div>
-    </div>
-    <div className="flex mb-4">
-      {[...Array(5)].map((_, i) => <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />)}
-    </div>
-    <p className="text-gray-600 italic">"{quote}"</p>
-  </div>
-);
-
 // --- Componente: Modal de Contacto ---
 const ContactModal = ({ isOpen, onClose }) => {
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -167,7 +92,6 @@ const ContactModal = ({ isOpen, onClose }) => {
     );
 };
 
-
 // --- Componentes de Layout ---
 
 const Header = ({ onBookNowClick }) => {
@@ -221,7 +145,7 @@ const Footer = () => (
         <div className="container mx-auto px-6 py-12">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div>
-                    <h3 className="text-xl font-bold text-white mb-4">Aventura<span className="text-indigo-400">Mundo</span></h3>
+                    <h3 className="text-xl font-bold text-white mb-4">Orbi<span className="text-indigo-400">Tours</span></h3>
                     <p className="text-gray-400">Creando recuerdos inolvidables alrededor del mundo.</p>
                 </div>
                 <div>
@@ -235,9 +159,9 @@ const Footer = () => (
                 </div>
                 <div>
                     <h4 className="text-lg font-semibold text-white mb-4">Contacto</h4>
-                    <p className="mb-2">123 Calle Aventura, Ciudad Viaje</p>
-                    <p className="mb-2">Email: info@aventuramundo.com</p>
-                    <p>Tel: +1 (234) 567-890</p>
+                    {/* <p className="mb-2">123 Calle Aventura, Ciudad Viaje</p> */}
+                    <p className="mb-2">Email: info@orbitours.com</p>
+                    <p>Tel: +57 3018543715</p>
                 </div>
                 <div>
                     <h4 className="text-lg font-semibold text-white mb-4">Síguenos</h4>
@@ -248,7 +172,7 @@ const Footer = () => (
                 </div>
             </div>
             <div className="mt-8 border-t border-gray-700 pt-6 text-center">
-                <p>&copy; {new Date().getFullYear()} AventuraMundo. Todos los derechos reservados.</p>
+                <p>&copy; {new Date().getFullYear()} Sofwipad. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
@@ -281,7 +205,6 @@ const WhatsAppButton = ({ phoneNumber }) => (
   </a>
 );
 
-
 // --- Componentes de Secciones ---
 
 const HeroSection = () => (
@@ -300,6 +223,38 @@ const HeroSection = () => (
   </section>
 );
 
+//Pasadia con Mangata Beach Club
+const AmenitiesSection = () => {
+    const amenities = [
+        { icon: <Ship className="h-10 w-10 text-gray-700" />, label: "Transporte en bote" },
+        { icon: <Umbrella className="h-10 w-10 text-gray-700" />, label: "Pasadía -todo incluido-" },
+        { icon: <Shirt className="h-10 w-10 text-gray-700" />, label: "Servicio de toallas" },
+        { icon: <UtensilsCrossed className="h-10 w-10 text-gray-700" />, label: "Almuerzo a la carta" },
+        { icon: <Hotel className="h-10 w-10 text-gray-700" />, label: "Promociones por temporadas" },
+    ];
+
+    return (
+        <section className="py-16 bg-white">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-800">Pasadía con Mangata Beach Club</h2>
+            <p className="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">Un lugar para desconectarte del mundo, en un paraíso junto al mar en donde disfrutarás el verdadero Caribe Colombiano. </p>
+          </div>
+
+            <div className="container mx-auto px-6">
+                <div className="flex justify-around items-center flex-wrap gap-8">
+                    {amenities.map(item => (
+                        <div key={item.label} className="flex flex-col items-center text-center w-32">
+                            {item.icon}
+                            <p className="mt-2 text-sm font-medium text-gray-600">{item.label}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+};
+
+//Actividades en tu Pasadía
 const DayTripActivitiesSection = () => {
     const activities = [
         { 
@@ -338,54 +293,7 @@ const DayTripActivitiesSection = () => {
     );
 };
 
-
-const AmenitiesSection = () => {
-    const amenities = [
-        { icon: <Ship className="h-10 w-10 text-gray-700" />, label: "Transporte en bote" },
-        { icon: <Umbrella className="h-10 w-10 text-gray-700" />, label: "Pasadía -todo incluido-" },
-        { icon: <Shirt className="h-10 w-10 text-gray-700" />, label: "Servicio de toallas" },
-        { icon: <UtensilsCrossed className="h-10 w-10 text-gray-700" />, label: "Almuerzo a la carta" },
-        { icon: <Hotel className="h-10 w-10 text-gray-700" />, label: "Promociones por temporadas" },
-    ];
-
-    return (
-        <section className="py-16 bg-white">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-800">Pasadía con Mangata Beach Club</h2>
-            <p className="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">Un lugar para desconectarte del mundo, en un paraíso junto al mar en donde disfrutarás el verdadero Caribe Colombiano. </p>
-        </div>
-
-            <div className="container mx-auto px-6">
-                <div className="flex justify-around items-center flex-wrap gap-8">
-                    {amenities.map(item => (
-                        <div key={item.label} className="flex flex-col items-center text-center w-32">
-                            {item.icon}
-                            <p className="mt-2 text-sm font-medium text-gray-600">{item.label}</p>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
-};
-
-const VideoBanner = () => (
-    <section className="relative h-[500px] flex items-center justify-center text-white overflow-hidden bg-black">
-        <iframe
-            className="absolute top-1/2 left-1/2 w-full h-[56.25vw] min-h-full min-w-[177.77vh] transform -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-60"
-            src="https://www.youtube.com/embed/bKUlPNfPho8?autoplay=1&mute=1&controls=0&loop=1&playlist=bKUlPNfPho8&modestbranding=1&showinfo=0&rel=0"
-            frameBorder="0"
-            allow="autoplay; encrypted-media"
-            allowFullScreen
-            title="Video de fondo de YouTube"
-        ></iframe>
-        <div className="relative z-10 text-center px-4">
-            <h2 className="text-4xl md:text-5xl font-extrabold" style={{textShadow: '2px 2px 8px rgba(0,0,0,0.7)'}}>TUS VACACIONES EN MANGATA</h2>
-            <p className="text-lg md:text-xl" style={{textShadow: '1px 1px 4px rgba(0,0,0,0.7)'}}>Cada viaje es una historia. Permítenos ayudarte a escribir la tuya.</p>
-        </div>
-    </section>
-);
-
+//Muévete a tu Ritmo
 const CarRentalSection = () => {
     const carFeatures = {
         compacto: [ { icon: <Users className="h-5 w-5 text-indigo-500"/>, text: '4 Pasajeros' }, { icon: <Briefcase className="h-5 w-5 text-indigo-500"/>, text: '2 Maletas' } ],
@@ -412,6 +320,7 @@ const CarRentalSection = () => {
     );
 };
 
+//-Todo lo que Necesitas
 const ServicesSection = () => (
     <section id="servicios" className="py-20 bg-white">
         <div className="container mx-auto px-6">
@@ -455,12 +364,107 @@ const CtaSection = ({ onContactClick }) => (
 );
 
 
+// --- Componentes de Tarjetas ---
+
+//Destins populares
+const VideoBanner = () => (
+    <section className="relative h-[500px] flex items-center justify-center text-white overflow-hidden bg-black">
+        <iframe
+            className="absolute top-1/2 left-1/2 w-full h-[56.25vw] min-h-full min-w-[177.77vh] transform -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-60"
+            src="https://www.youtube.com/embed/bKUlPNfPho8?autoplay=1&mute=1&controls=0&loop=1&playlist=bKUlPNfPho8&modestbranding=1&showinfo=0&rel=0"
+            frameBorder="0"
+            allow="autoplay; encrypted-media"
+            allowFullScreen
+            title="Video de fondo de YouTube"
+        ></iframe>
+        <div className="relative z-10 text-center px-4">
+            <h2 className="text-4xl md:text-5xl font-extrabold" style={{textShadow: '2px 2px 8px rgba(0,0,0,0.7)'}}>TUS VACACIONES EN MANGATA</h2>
+            <p className="text-lg md:text-xl" style={{textShadow: '1px 1px 4px rgba(0,0,0,0.7)'}}>Cada viaje es una historia. Permítenos ayudarte a escribir la tuya.</p>
+        </div>
+    </section>
+);
+//Actividades en tu Pasadía
+const DestinationCard = ({ image, name, description }) => (
+  <div className="bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 ease-in-out group flex flex-col">
+    <div className="relative h-56">
+      <img className="w-full h-full object-cover" src={image} alt={`Imagen de ${name}`} onError={(e) => { e.target.onerror = null; e.target.src='https://placehold.co/600x400/e2e8f0/4a5568?text=Actividad'; }}/>
+      <div className="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-40 transition-all duration-300"></div>
+    </div>
+    <div className="p-6 flex flex-col flex-grow">
+      <h3 className="text-xl font-bold text-gray-800 mb-2">{name}</h3>
+      <p className="text-gray-600 leading-relaxed flex-grow">{description}</p>
+      {/* <button className="mt-4 text-indigo-600 font-semibold hover:text-indigo-800 transition-colors duration-300 flex items-center self-start">
+        Saber Más
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+          <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+        </svg>
+      </button> */}
+    </div>
+  </div>
+);
+
+//Muevete a tu Ritmo
+const CarRentalCard = ({ image, name, features, price }) => (
+    <div className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
+        <div className="relative h-48">
+            <img src={image} alt={`Imagen de ${name}`} className="w-full h-full object-cover" onError={(e) => { e.target.onerror = null; e.target.src='https://placehold.co/600x400/e2e8f0/4a5568?text=Auto'; }}/>
+        </div>
+        <div className="p-6 flex-grow">
+            <h3 className="text-2xl font-bold text-gray-800 mb-4">{name}</h3>
+            <ul className="space-y-2 text-gray-600">
+                {features.map((feature, index) => (
+                    <li key={index} className="flex items-center">
+                        {feature.icon}
+                        <span className="ml-3">{feature.text}</span>
+                    </li>
+                ))}
+            </ul>
+        </div>
+        <div className="p-6 bg-gray-50">
+            <p className="text-lg text-gray-700">Desde <span className="font-bold text-2xl text-indigo-600">${price}</span>/día</p>
+            <button className="mt-4 w-full bg-indigo-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-indigo-700 transition-all duration-300 shadow-md">
+                Reservar Auto
+            </button>
+        </div>
+    </div>
+);
+
+// --- Todo lo que Necesitas ---
+const ServiceCard = ({ icon, title, description }) => (
+  <div className="bg-white p-8 rounded-xl shadow-md text-center hover:shadow-xl transition-shadow duration-300">
+    <div className="flex justify-center items-center mb-4">
+      <div className="bg-indigo-100 p-4 rounded-full">
+        {icon}
+      </div>
+    </div>
+    <h3 className="text-xl font-bold text-gray-800 mb-2">{title}</h3>
+    <p className="text-gray-600">{description}</p>
+  </div>
+);
+
+const TestimonialCard = ({ quote, author, role, image }) => (
+  <div className="bg-white rounded-xl shadow-lg p-8 mx-auto max-w-md">
+    <div className="flex items-center mb-4">
+      <img className="w-16 h-16 rounded-full object-cover mr-4" src={image} alt={`Foto de ${author}`} onError={(e) => { e.target.onerror = null; e.target.src='https://placehold.co/100x100/e2e8f0/4a5568?text=Autor'; }}/>
+      <div>
+        <p className="font-bold text-gray-900">{author}</p>
+        <p className="text-sm text-gray-500">{role}</p>
+      </div>
+    </div>
+    <div className="flex mb-4">
+      {[...Array(5)].map((_, i) => <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />)}
+    </div>
+    <p className="text-gray-600 italic">"{quote}"</p>
+  </div>
+);
+
+
 // =================================================================
 // COMPONENTE PRINCIPAL DE LA PÁGINA
 // =================================================================
 
 export default function App() {
-  const whatsappNumber = "573001234567";
+  const whatsappNumber = "573018543715"; // Número de WhatsApp para contacto
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
@@ -478,7 +482,7 @@ export default function App() {
         <VideoBanner />
         <AmenitiesSection />
     
-
+        
         <section
           className="mt-1 h-screen bg-cover bg-center flex items-center justify-center text-white"
           style={{

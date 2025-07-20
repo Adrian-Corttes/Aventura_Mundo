@@ -184,7 +184,7 @@ const Header = ({ onBookNowClick }) => {
     <header className="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-40">
       <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
         <a href="#" className="text-2xl font-bold text-indigo-600">
-          Aventura<span className="text-gray-800">Mundo</span>
+          Orbi<span className="text-gray-800">Tours</span>
         </a>
         <div className="hidden lg:flex items-center space-x-8">
           {navLinks.map(link => (
@@ -295,9 +295,7 @@ const HeroSection = () => (
       <p className="text-xl md:text-2xl font-light mb-8 max-w-3xl mx-auto" style={{textShadow: '1px 1px 4px rgba(0,0,0,0.7)'}}>
         Creamos experiencias de viaje inolvidables, hechas a tu medida.
       </p>
-      <a href="#actividades" className="bg-indigo-600 text-white font-bold py-4 px-10 rounded-lg hover:bg-indigo-700 transition-all duration-300 text-lg shadow-xl transform hover:scale-105">
-        Ver Actividades
-      </a>
+     
     </div>
   </section>
 );

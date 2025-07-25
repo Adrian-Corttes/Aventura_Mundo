@@ -19,9 +19,12 @@ import {
   Send,
 } from "lucide-react";
 
+import Header from "./components/sections/Header";
 import HeroSection from "./components/sections/HeroSection";
 import AmenitiesSection from "./components/sections/AmenitiesSection";
 import DayTripActivitiesSection from "./components/sections/DayTripActivitiesSection";
+import CarRentalSection from "./components/sections/CarRentalSection";
+import Footer from "./components/sections/Footer";
 // =================================================================
 // DEFINICIÓN DE TODOS LOS COMPONENTES EN UN SOLO ARCHIVO
 // Para resolver los errores de importación en este entorno.
@@ -181,161 +184,6 @@ const ContactModal = ({ isOpen, onClose }) => {
   );
 };
 
-// --- Componentes de Layout ---
-
-const Header = ({ onBookNowClick }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const navLinks = [
-    { href: "#", label: "Inicio" },
-    { href: "#actividades", label: "Actividades" },
-    { href: "#servicios", label: "Servicios" },
-    { href: "#alquiler", label: "Alquiler de Autos" },
-    { href: "#contacto", label: "Contacto" },
-  ];
-
-  return (
-    <header className="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-40">
-      <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
-        <a href="#" className="text-2xl font-bold text-indigo-600">
-          Orbi<span className="text-gray-800">Tours</span>
-        </a>
-        <div className="hidden lg:flex items-center space-x-8">
-          {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="text-gray-600 hover:text-indigo-600 transition-colors duration-300 font-medium"
-            >
-              {link.label}
-            </a>
-          ))}
-        </div>
-        <div className="hidden lg:block">
-          <button
-            onClick={onBookNowClick}
-            className="bg-indigo-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-indigo-700 transition-all duration-300 shadow-md"
-          >
-            Reservar Ahora
-          </button>
-        </div>
-        <div className="lg:hidden">
-          <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            {isMenuOpen ? (
-              <X className="h-6 w-6 text-gray-700" />
-            ) : (
-              <Menu className="h-6 w-6 text-gray-700" />
-            )}
-          </button>
-        </div>
-      </nav>
-      {isMenuOpen && (
-        <div className="lg:hidden bg-white py-4 px-6">
-          {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="block text-gray-600 hover:text-indigo-600 py-2 transition-colors duration-300 font-medium"
-            >
-              {link.label}
-            </a>
-          ))}
-          <button
-            onClick={onBookNowClick}
-            className="mt-4 w-full bg-indigo-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-indigo-700 transition-all duration-300 shadow-md"
-          >
-            Reservar Ahora
-          </button>
-        </div>
-      )}
-    </header>
-  );
-};
-
-const Footer = () => (
-  <footer className="bg-gray-800 text-gray-300">
-    <div className="container mx-auto px-6 py-12">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div>
-          <h3 className="text-xl font-bold text-white mb-4">
-            Orbi<span className="text-indigo-400">Tours</span>
-          </h3>
-          <p className="text-gray-400">
-            Creando recuerdos inolvidables alrededor del mundo.
-          </p>
-        </div>
-        <div>
-          <h4 className="text-lg font-semibold text-white mb-4">
-            Enlaces Rápidos
-          </h4>
-          <ul>
-            <li className="mb-2">
-              <a href="#" className="hover:text-indigo-400 transition-colors">
-                Inicio
-              </a>
-            </li>
-            <li className="mb-2">
-              <a
-                href="#actividades"
-                className="hover:text-indigo-400 transition-colors"
-              >
-                Actividades
-              </a>
-            </li>
-            <li className="mb-2">
-              <a
-                href="#servicios"
-                className="hover:text-indigo-400 transition-colors"
-              >
-                Servicios
-              </a>
-            </li>
-            <li className="mb-2">
-              <a href="#" className="hover:text-indigo-400 transition-colors">
-                Blog
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div>
-          <h4 className="text-lg font-semibold text-white mb-4">Contacto</h4>
-          {/* <p className="mb-2">123 Calle Aventura, Ciudad Viaje</p> */}
-          <p className="mb-2">Email: info@orbitours.com</p>
-          <p>Tel: +57 3018543715</p>
-        </div>
-        <div>
-          <h4 className="text-lg font-semibold text-white mb-4">Síguenos</h4>
-          <div className="flex space-x-4">
-            <a
-              href="#"
-              className="text-gray-400 hover:text-white"
-              aria-label="Facebook"
-            >
-              <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z" />
-              </svg>
-            </a>
-            <a
-              href="#"
-              className="text-gray-400 hover:text-white"
-              aria-label="Instagram"
-            >
-              <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44 1.441-.645 1.441-1.44-.645-1.44-1.441-1.44z" />
-              </svg>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div className="mt-8 border-t border-gray-700 pt-6 text-center">
-        <p>
-          &copy; {new Date().getFullYear()} Sofwipad. Todos los derechos
-          reservados.
-        </p>
-      </div>
-    </div>
-  </footer>
-);
-
 // --- Componentes Comunes ---
 
 const WhatsAppButton = ({ phoneNumber }) => (
@@ -359,91 +207,12 @@ const WhatsAppButton = ({ phoneNumber }) => (
         fill="#ffffff"
       />
     </svg>
-    <span className="ml-2 text-sm">Contáctanos</span>
+    <span className="ml-2 ">Contáctanos</span>
   </a>
 );
 
 // --- Componentes de Secciones ---
 
-//Actividades en tu Pasadía
-
-//Muévete a tu Ritmo
-const CarRentalSection = () => {
-  const carFeatures = {
-    compacto: [
-      {
-        icon: <Users className="h-5 w-5 text-indigo-500" />,
-        text: "4 Pasajeros",
-      },
-      {
-        icon: <Briefcase className="h-5 w-5 text-indigo-500" />,
-        text: "2 Maletas",
-      },
-    ],
-    suv: [
-      {
-        icon: <Users className="h-5 w-5 text-indigo-500" />,
-        text: "5 Pasajeros",
-      },
-      {
-        icon: <Briefcase className="h-5 w-5 text-indigo-500" />,
-        text: "4 Maletas",
-      },
-    ],
-    lujo: [
-      {
-        icon: <Users className="h-5 w-5 text-indigo-500" />,
-        text: "5 Pasajeros",
-      },
-      {
-        icon: <Briefcase className="h-5 w-5 text-indigo-500" />,
-        text: "3 Maletas",
-      },
-    ],
-  };
-  const cars = [
-    {
-      image:
-        "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=2070&auto=format&fit=crop",
-      name: "Deportivo de Lujo",
-      features: carFeatures.lujo,
-      price: "250",
-    },
-    {
-      image:
-        "https://images.unsplash.com/photo-1583121274602-3e2820c69888?q=80&w=2070&auto=format&fit=crop",
-      name: "SUV Familiar",
-      features: carFeatures.suv,
-      price: "120",
-    },
-    {
-      image:
-        "https://images.unsplash.com/photo-1514316454348-772aadd4e2b3?q=80&w=1974&auto=format&fit=crop",
-      name: "Compacto Urbano",
-      features: carFeatures.compacto,
-      price: "80",
-    },
-  ];
-  return (
-    <section id="alquiler" className="py-20 bg-gray-100">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-800">
-            Muévete a tu Ritmo
-          </h2>
-          <p className="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">
-            Explora cada rincón de tu destino con total libertad.
-          </p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {cars.map((car) => (
-            <CarRentalCard key={car.name} {...car} />
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
 
 //-Todo lo que Necesitas
 const ServicesSection = () => (
@@ -587,43 +356,6 @@ const VideoBanner2 = () => (
       </p>
     </div> */}
   </section>
-);
-
-//Muevete a tu Ritmo
-const CarRentalCard = ({ image, name, features, price }) => (
-  <div className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
-    <div className="relative h-48">
-      <img
-        src={image}
-        alt={`Imagen de ${name}`}
-        className="w-full h-full object-cover"
-        onError={(e) => {
-          e.target.onerror = null;
-          e.target.src = "https://placehold.co/600x400/e2e8f0/4a5568?text=Auto";
-        }}
-      />
-    </div>
-    <div className="p-6 flex-grow">
-      <h3 className="text-2xl font-bold text-gray-800 mb-4">{name}</h3>
-      <ul className="space-y-2 text-gray-600">
-        {features.map((feature, index) => (
-          <li key={index} className="flex items-center">
-            {feature.icon}
-            <span className="ml-3">{feature.text}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-    <div className="p-6 bg-gray-50">
-      <p className="text-lg text-gray-700">
-        Desde{" "}
-        <span className="font-bold text-2xl text-indigo-600">${price}</span>/día
-      </p>
-      <button className="mt-4 w-full bg-indigo-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-indigo-700 transition-all duration-300 shadow-md">
-        Reservar Auto
-      </button>
-    </div>
-  </div>
 );
 
 // --- Todo lo que Necesitas ---
